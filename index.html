@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modelos de portfólio · Brilhos</title>
+<meta name="description" content="Os modelos de portfólio das alunas e alunos da Rafa Chagas: escolha um, copie o prompt e monte o seu." />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* Site dos modelos: identidade da Seu Influencer (Poppins, off-white quente, roxo, limão).
+   Mesma lógica do site da Imersão: card com capa, "ver o modelo" e "copiar prompt"
+   com os dados da aluna completando o prompt e salvos no navegador. */
+:root{
+  --bg:#F1F0EA; --bg2:#F7F6F2; --branco:#fff; --preto:#141414; --roxo:#6B3BF8; --roxo2:#5526E0; --lavanda:#EFEAFF;
+  --limao:#D7FF00; --rosa:#E84CA7; --verde:#1F9D55; --c1:#55534E; --c2:#8D8B84; --c4:#D6D4CD;
+  --holo:linear-gradient(115deg,#E6DEFF 0%,#FFD6EE 22%,#D7FF00 42%,#BDF0FF 62%,#E6DEFF 82%,#FFD6EE 100%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--preto);font-family:Poppins,system-ui,sans-serif;font-size:14px;line-height:1.55;overflow-x:hidden;
+  background-image:radial-gradient(circle,rgba(107,59,248,.1) 1px,transparent 1.5px);background-size:22px 22px}
+a{color:inherit}
+.dentro{width:min(1240px,92vw);margin:0 auto}
+.oculto{display:none!important}
+h1,h2{font-weight:700;letter-spacing:-.035em;line-height:1.05;margin:0}
+.holo{background:var(--holo);background-size:300% 100%;animation:brilha 7s linear infinite}
+@keyframes brilha{to{background-position:300% 0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* portão */
+.portao{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;padding:24px;
+  background-image:radial-gradient(circle,rgba(107,59,248,.12) 1px,transparent 1.5px);background-size:22px 22px}
+.portao__caixa{width:min(420px,100%);background:#fff;border-radius:28px;padding:36px 28px 28px;text-align:center;box-shadow:0 30px 70px -30px rgba(20,20,20,.35)}
+.portao__selo{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--preto);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;margin-bottom:18px}
+.portao h1{font-size:32px;margin-bottom:8px}
+.portao h1 span{color:var(--roxo)}
+.portao p{color:var(--c1);margin:0 0 20px}
+.portao input{width:100%;font:inherit;font-size:16px;padding:13px 16px;border:1.5px solid var(--c4);border-radius:999px;background:var(--bg2);text-align:center}
+.portao input:focus{outline:none;border-color:var(--roxo)}
+.portao button{margin-top:10px;width:100%;font:inherit;font-weight:600;font-size:15px;padding:13px;border:0;border-radius:999px;background:var(--roxo);color:#fff;cursor:pointer;box-shadow:0 10px 24px -10px rgba(107,59,248,.7)}
+.portao__erro{color:var(--rosa);font-weight:600;font-size:13px;margin:12px 0 0;display:none}
+.portao__erro.aparece{display:block}
+
+/* topo */
+header.topo{padding:44px 0 10px;text-align:center}
+.selo{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--preto);border-radius:999px;padding:6px 16px 6px 6px;font-size:13px;font-weight:600}
+.selo b{width:26px;height:26px;border-radius:50%;background:var(--preto);color:var(--limao);display:grid;place-items:center;font-size:13px}
+header.topo h1{font-size:clamp(34px,5.4vw,58px);margin:18px 0 10px}
+header.topo h1 span{color:var(--roxo)}
+header.topo p{color:var(--c1);max-width:620px;margin:0 auto;font-size:16px}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px auto 0;max-width:900px}
+.passo{background:#fff;border:1px solid var(--c4);border-radius:20px;padding:16px 18px;text-align:left}
+.passo b{display:flex;align-items:center;gap:8px;font-size:15px;margin-bottom:4px}
+.passo b i{font-style:normal;width:26px;height:26px;border-radius:9px;background:var(--lavanda);color:var(--roxo);display:grid;place-items:center;font-size:13px}
+.passo span{font-size:13px;color:var(--c1)}
+.funil{margin:22px auto 0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:900px}
+.funil span{background:#fff;border:1px solid var(--c4);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--c1)}
+.funil span b{color:var(--roxo)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:28px 0 6px}
+.filtro{border:1px solid var(--c4);background:#fff;font:inherit;font-weight:600;font-size:14px;padding:9px 18px;border-radius:999px;cursor:pointer;transition:.15s}
+.filtro:hover{border-color:var(--preto)}
+.filtro[aria-pressed="true"]{background:var(--preto);color:#fff;border-color:var(--preto)}
+
+/* grade */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;margin:26px 0 60px}
+.card{background:#fff;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 40px -26px rgba(20,20,20,.4);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -24px rgba(20,20,20,.45)}
+.capa{position:relative;aspect-ratio:1000/711;overflow:hidden;background:var(--lavanda)}
+.capa img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.num{position:absolute;top:12px;left:12px;background:var(--preto);color:var(--limao);font-weight:700;font-size:13px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.tag{position:absolute;top:14px;right:12px;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px}
+.tag.brilhos{background:var(--limao);color:var(--preto)}
+.info{padding:14px 18px 4px;display:flex;align-items:center;gap:10px}
+.emoji{width:36px;height:36px;border-radius:12px;background:var(--lavanda);display:grid;place-items:center;font-size:18px}
+.nome{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.acoes{display:flex;gap:8px;padding:12px 18px 18px;margin-top:auto}
+.acoes button,.acoes a{flex:1;font:inherit;font-weight:600;font-size:13px;padding:11px 10px;border-radius:999px;cursor:pointer;text-align:center;text-decoration:none;transition:.15s;border:0}
+.acoes .copiar{background:var(--roxo);color:#fff}
+.acoes .copiar:hover{background:var(--roxo2)}
+.acoes .ver{background:var(--bg2);border:1px solid var(--c4)}
+.acoes .ver:hover{border-color:var(--preto)}
+
+/* janela do prompt */
+.janela{position:fixed;inset:0;z-index:90;display:none;place-items:center;padding:16px}
+.janela.aberta{display:grid}
+.janela__fundo{position:absolute;inset:0;background:rgba(20,20,20,.6)}
+.janela__caixa{position:relative;z-index:2;width:min(1180px,100%);height:min(88vh,920px);display:flex;flex-direction:column;background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.janela__topo{padding:14px 20px;border-bottom:1px solid var(--c4);display:flex;align-items:center;gap:12px;flex:none}
+.janela__topo h2{font-size:18px}
+.janela__topo .ver-mod{font-size:13px;font-weight:600;color:var(--roxo);text-decoration:none}
+.janela__x{margin-left:auto;width:36px;height:36px;border-radius:50%;border:1px solid var(--c4);background:var(--bg2);font-size:18px;cursor:pointer;line-height:1;flex:none}
+.janela__corpo{display:grid;grid-template-columns:1.06fr .94fr;flex:1;min-height:0}
+.janela__texto{overflow:auto;background:var(--bg2);padding:18px 20px;border-right:1px solid var(--c4)}
+.janela__texto pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.62;color:#2b2a26}
+.janela__form{overflow:auto;padding:18px 20px 26px}
+.form-intro{font-size:13px;color:var(--c1);margin:0 0 16px}
+.grupo{border:0;padding:0;margin:0 0 18px}
+.grupo legend{font-weight:700;font-size:15px;margin-bottom:8px;padding:0}
+.linha{display:grid;gap:10px;margin-bottom:10px}
+.linha--2{grid-template-columns:1fr 1fr}
+.linha--3{grid-template-columns:1fr 1fr 1fr}
+.campo label{display:block;font-size:12px;font-weight:600;color:var(--c1);margin-bottom:4px}
+.campo input,.campo textarea{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--c4);border-radius:12px;background:var(--bg2);color:var(--preto)}
+.campo input:focus,.campo textarea:focus{outline:none;border-color:var(--roxo)}
+.campo textarea{min-height:64px;resize:vertical}
+.nichos{display:flex;flex-wrap:wrap;gap:7px}
+.nicho{font:inherit;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid var(--c4);background:var(--bg2);color:var(--c1);cursor:pointer}
+.nicho[aria-pressed="true"]{background:var(--roxo);border-color:var(--roxo);color:#fff}
+.destaque-linha{display:grid;grid-template-columns:1.3fr .7fr;gap:8px;margin-bottom:8px}
+.salvo{font-size:12px;color:var(--verde);font-weight:600;margin-top:6px}
+.janela__pe{padding:12px 20px;border-top:1px solid var(--c4);display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:none}
+.janela__pe .dica{font-size:13px;color:var(--c1);flex:1;min-width:190px}
+.btn-copiar{font:inherit;font-weight:600;font-size:15px;padding:12px 24px;border-radius:999px;border:0;background:var(--roxo);color:#fff;cursor:pointer;box-shadow:0 10px 24px -10px rgba(107,59,248,.7)}
+.btn-copiar.feito{background:var(--verde)}
+.btn-limpar{font:inherit;font-weight:600;font-size:13px;padding:9px 14px;border-radius:999px;border:1px solid var(--c4);background:#fff;color:var(--c1);cursor:pointer}
+footer.rodape{text-align:center;padding:10px 0 40px;color:var(--c2);font-size:13px}
+@media (max-width:980px){
+  .janela__corpo{grid-template-columns:1fr}
+  .janela__texto{border-right:0;border-top:1px solid var(--c4);order:2}
+  .janela__form{order:1}
+  .janela__caixa{height:92vh}
+}
+@media (max-width:760px){
+  .passos{grid-template-columns:1fr}
+  .grade{grid-template-columns:1fr;gap:18px}
+  .linha--2,.linha--3,.destaque-linha{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ PORTÃO ============ -->
+<div class="portao" id="portao">
+  <div class="portao__caixa">
+    <span class="portao__selo holo">✦ Brilho · Rafa Chagas</span>
+    <h1>Escolha seu <span>portfólio</span></h1>
+    <p>Os modelos das Brilhos, alunos da Rafa. Digite a palavra que você recebeu pra entrar.</p>
+    <form id="portaoForm">
+      <input id="senha" type="text" autocomplete="off" placeholder="a palavra secreta" aria-label="Palavra secreta" />
+      <button type="submit">Entrar ✦</button>
+      <p class="portao__erro" id="portaoErro">Não é essa. Tenta de novo ✨</p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ SITE ============ -->
+<div id="site" class="oculto">
+  <header class="topo dentro">
+    <span class="selo holo"><b>✦</b> Brilhos · alunos da Rafa Chagas</span>
+    <h1>Modelos de <span>portfólio</span> das Brilhos</h1>
+    <p>Escolha o que tem mais a sua cara, copie o prompt e cole no seu Claude. Ele monta o portfólio inteiro, e você troca os textos, as fotos e os vídeos pelos seus.</p>
+    <div class="passos">
+      <div class="passo"><b><i>1</i> Escolha</b><span>Clique em "ver o modelo" pra passear por ele antes de decidir.</span></div>
+      <div class="passo"><b><i>2</i> Preencha e copie</b><span>No "copiar prompt", preencha seus dados do lado: o prompt se completa sozinho.</span></div>
+      <div class="passo"><b><i>3</i> Cole no Claude</b><span>Cole, mande, e depois vá pedindo os ajustes até ficar com a sua cara.</span></div>
+    </div>
+    <div class="funil"><span>Todos seguem o funil: <b>1</b> capa</span><span><b>2</b> sobre mim</span><span><b>3</b> destaques</span><span><b>4</b> conteúdo por nichos</span><span><b>5</b> o que as marcas falam</span><span><b>6</b> contato</span></div>
+      </header>
+  <main class="dentro"><div class="grade" id="grade"></div></main>
+  <footer class="rodape">✦ Feito pras Brilhos · cada modelo abre numa aba nova</footer>
+</div>
+
+<!-- ============ JANELA DO PROMPT ============ -->
+<div class="janela" id="janela" role="dialog" aria-modal="true" aria-labelledby="janelaTitulo">
+  <div class="janela__fundo" id="janelaFundo"></div>
+  <div class="janela__caixa">
+    <div class="janela__topo">
+      <h2 id="janelaTitulo">Prompt</h2>
+      <a class="ver-mod" id="janelaVer" href="#" target="_blank" rel="noopener">ver o modelo ↗</a>
+      <button class="janela__x" id="janelaX" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="janela__corpo">
+      <div class="janela__texto"><pre id="janelaTexto"></pre></div>
+      <aside class="janela__form">
+        <p class="form-intro">Preencha o que você já tem. O prompt do lado se completa sozinho e fica salvo no seu navegador pros outros modelos, então você só preenche uma vez.</p>
+        <div id="campos"></div>
+        <button class="btn-limpar" id="btnLimpar" type="button">Limpar meus dados</button>
+        <p class="salvo" id="salvo"></p>
+      </aside>
+    </div>
+    <div class="janela__pe">
+      <span class="dica">Cole no seu Claude e mande. Depois é só ir pedindo os ajustes.</span>
+      <button class="btn-copiar" id="btnCopiar">Copiar prompt</button>
+    </div>
+  </div>
+</div>
+
+<script src="modelos.js"></script>
+<script src="prompts.js"></script>
+<script>
+/* ---------- portão: troque as palavras aqui ---------- */
+var SENHAS = ["brilho","brilhos"];
+var CHAVE = "brilhosOk";
+function limpa(t){ return (t||"").toLowerCase().trim().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/\s+/g,""); }
+function liberar(){
+  document.getElementById("portao").classList.add("oculto");
+  document.getElementById("site").classList.remove("oculto");
+  try{ localStorage.setItem(CHAVE,"1"); }catch(e){}
+  montar();
+}
+document.getElementById("portaoForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var v = limpa(document.getElementById("senha").value);
+  if (SENHAS.map(limpa).indexOf(v) >= 0) liberar();
+  else { document.getElementById("portaoErro").classList.add("aparece"); document.getElementById("senha").select(); }
+});
+
+/* ---------- grade ---------- */
+var ROTULO = {brilhos:"brilhos"};
+var montado = false;
+function montar(){
+  if (montado) return; montado = true;
+  var g = document.getElementById("grade");
+  MODELOS.forEach(function(m, i){
+    var c = document.createElement("article");
+    c.className = "card"; c.dataset.familia = m.familia;
+    c.innerHTML =
+      '<div class="capa"><span class="num">' + String(i+1).padStart(2,"0") + '</span>' +
+      '<span class="tag ' + m.familia + '">' + ROTULO[m.familia] + '</span>' +
+      '<img src="capas/' + m.pasta + '.jpg" alt="Modelo ' + m.nome + '" loading="lazy" /></div>' +
+      '<div class="info"><span class="emoji">' + m.emoji + '</span><span class="nome">' + m.nome + '</span></div>' +
+      '<div class="acoes">' +
+        '<button class="copiar" data-pasta="' + m.pasta + '">Copiar prompt</button>' +
+        '<a class="ver" href="modelos/' + m.pasta + '/index.html" target="_blank" rel="noopener">Ver o modelo</a>' +
+      '</div>';
+    g.appendChild(c);
+  });
+  [].forEach.call(document.querySelectorAll(".copiar"), function(b){
+    b.addEventListener("click", function(){ abrirPrompt(b.dataset.pasta); });
+  });
+}
+
+/* ---------- campos dos dados ---------- */
+var NICHOS = ["beleza","skincare","maquiagem","cabelo","moda","casa e decoração","comida","fitness","suplementos","tech","games","pet","maternidade","viagem","carros","finanças"];
+var CAMPOS = [
+  {grupo:"Seus dados", itens:[
+    {id:"nome", rot:"Nome completo", ph:"Seu Nome", largura:1},
+    {id:"insta", rot:"@ do Instagram", ph:"@seuuser", largura:2},
+    {id:"email", rot:"E-mail", ph:"voce@email.com", largura:2},
+    {id:"zap", rot:"WhatsApp com DDD", ph:"(11) 90000-0000", largura:2},
+    {id:"cidade", rot:"Cidade", ph:"São Paulo", largura:2}
+  ]},
+  {grupo:"Seu trabalho", itens:[
+    {id:"frase", rot:"Uma frase do que você faz pela marca", ph:"eu gravo como quem indica pra um amigo, e vende", largura:1, area:true},
+    {id:"marcas", rot:"Marcas com quem já trabalhou", ph:"Marca A, Marca B, Marca C", largura:1}
+  ]},
+  {grupo:"Seus números", itens:[
+    {id:"videos", rot:"Vídeos gravados", ph:"30+", largura:3},
+    {id:"nmarcas", rot:"Marcas atendidas", ph:"12", largura:3},
+    {id:"prazo", rot:"Prazo de entrega", ph:"7 dias", largura:3}
+  ]}
+];
+var NDEST = 5;
+
+function montarCampos(){
+  var caixa = document.getElementById("campos");
+  CAMPOS.forEach(function(g){
+    var f = document.createElement("fieldset"); f.className = "grupo";
+    var l = document.createElement("legend"); l.textContent = g.grupo; f.appendChild(l);
+    var linha = null, cheio = 0;
+    g.itens.forEach(function(it){
+      if (!linha || cheio >= it.largura){
+        linha = document.createElement("div");
+        linha.className = "linha" + (it.largura === 2 ? " linha--2" : it.largura === 3 ? " linha--3" : "");
+        f.appendChild(linha); cheio = 0;
+      }
+      var c = document.createElement("div"); c.className = "campo";
+      c.innerHTML = '<label for="d_' + it.id + '">' + it.rot + '</label>' +
+        (it.area ? '<textarea id="d_' + it.id + '" placeholder="' + it.ph + '"></textarea>'
+                 : '<input id="d_' + it.id + '" type="text" placeholder="' + it.ph + '" />');
+      linha.appendChild(c); cheio++;
+    });
+    caixa.appendChild(f);
+  });
+  var f = document.createElement("fieldset"); f.className = "grupo";
+  f.innerHTML = '<legend>Seus nichos (cada um precisa de 3 vídeos)</legend><div class="nichos" id="nichos"></div>';
+  caixa.appendChild(f);
+  var n = f.querySelector("#nichos");
+  NICHOS.forEach(function(x){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "nicho"; b.textContent = x; b.dataset.nicho = x; b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", function(){
+      b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      salvar(); atualizar();
+    });
+    n.appendChild(b);
+  });
+  var d = document.createElement("fieldset"); d.className = "grupo";
+  d.innerHTML = '<legend>Seus 5 melhores vídeos (do mais forte pro menos forte)</legend>';
+  for (var i = 1; i <= NDEST; i++){
+    var linha = document.createElement("div"); linha.className = "destaque-linha";
+    linha.innerHTML =
+      '<div class="campo"><label for="d_link' + i + '">Link do vídeo ' + i + '</label>' +
+      '<input id="d_link' + i + '" type="text" placeholder="link do .mp4 ou do reels" /></div>' +
+      '<div class="campo"><label for="d_res' + i + '">Resultado (se tiver)</label>' +
+      '<input id="d_res' + i + '" type="text" placeholder="116 vendas" /></div>';
+    d.appendChild(linha);
+  }
+  caixa.appendChild(d);
+  caixa.addEventListener("input", function(){ salvar(); atualizar(); });
+}
+
+function ids(){
+  var l = [];
+  CAMPOS.forEach(function(g){ g.itens.forEach(function(i){ l.push(i.id); }); });
+  for (var i = 1; i <= NDEST; i++){ l.push("link" + i); l.push("res" + i); }
+  return l;
+}
+function pega(id){ var e = document.getElementById("d_" + id); return e ? e.value.trim() : ""; }
+function nichosEscolhidos(){
+  return [].slice.call(document.querySelectorAll('.nicho[aria-pressed="true"]')).map(function(b){ return b.dataset.nicho; });
+}
+function salvar(){
+  var d = {};
+  ids().forEach(function(i){ d[i] = pega(i); });
+  d.nichos = nichosEscolhidos();
+  try{ localStorage.setItem("brilhosDados", JSON.stringify(d)); }catch(e){}
+  document.getElementById("salvo").textContent = "salvo no seu navegador ✓";
+}
+function carregar(){
+  var d = {};
+  try{ d = JSON.parse(localStorage.getItem("brilhosDados") || "{}"); }catch(e){}
+  ids().forEach(function(i){ var e = document.getElementById("d_" + i); if (e && d[i]) e.value = d[i]; });
+  (d.nichos || []).forEach(function(n){
+    var b = document.querySelector('.nicho[data-nicho="' + n + '"]'); if (b) b.setAttribute("aria-pressed","true");
+  });
+}
+
+function blocoDados(){
+  var linhas = [], n = nichosEscolhidos();
+  function add(rot, v){ if (v) linhas.push(rot + ": " + v); }
+  add("Nome", pega("nome"));
+  add("Instagram", pega("insta"));
+  add("E-mail", pega("email"));
+  add("WhatsApp", pega("zap"));
+  add("Cidade", pega("cidade"));
+  if (n.length) linhas.push("Nichos que eu atendo (uma aba pra cada): " + n.join(", "));
+  add("Frase do que eu faço pela marca", pega("frase"));
+  add("Marcas com quem já trabalhei", pega("marcas"));
+  var num = [];
+  if (pega("videos")) num.push(pega("videos") + " vídeos gravados");
+  if (pega("nmarcas")) num.push(pega("nmarcas") + " marcas atendidas");
+  if (pega("prazo")) num.push("entrega em " + pega("prazo"));
+  if (num.length) linhas.push("Meus 3 números da capa: " + num.join(", "));
+  var dest = [];
+  for (var i = 1; i <= NDEST; i++){
+    var l = pega("link" + i), r = pega("res" + i);
+    if (l || r) dest.push("  " + i + ") " + (l || "link ainda não tenho") + (r ? " | resultado: " + r : ""));
+  }
+  if (dest.length) linhas.push("Meus 5 melhores vídeos (o 1 é o mais forte):\n" + dest.join("\n"));
+  if (!linhas.length){
+    return "== MEUS DADOS ==\nAinda não preenchi meus dados. Use placeholders claros (Seu Nome, @seuuser, Marca A) no objeto DADOS e deixe as lacunas listradas com as dicas, pra eu trocar depois.";
+  }
+  return "== MEUS DADOS (use estas informações no objeto DADOS, no lugar dos placeholders) ==\n" + linhas.join("\n") +
+    "\n\nO que eu não passei acima, deixe como lacuna listrada com a dica, fácil de achar e trocar.";
+}
+
+/* ---------- janela do prompt ---------- */
+var janela = document.getElementById("janela"), pastaAtual = "", textoAtual = "";
+function atualizar(){
+  textoAtual = (PROMPTS[pastaAtual] || "") + "\n\n" + blocoDados();
+  document.getElementById("janelaTexto").textContent = textoAtual;
+  var b = document.getElementById("btnCopiar");
+  b.textContent = "Copiar prompt"; b.classList.remove("feito");
+}
+function abrirPrompt(pasta){
+  var m = MODELOS.filter(function(x){ return x.pasta === pasta; })[0];
+  pastaAtual = pasta;
+  document.getElementById("janelaTitulo").textContent = m.emoji + " Prompt do modelo " + m.nome;
+  document.getElementById("janelaVer").href = "modelos/" + pasta + "/index.html";
+  atualizar();
+  janela.classList.add("aberta");
+  document.querySelector(".janela__texto").scrollTop = 0;
+}
+function fechar(){ janela.classList.remove("aberta"); }
+document.getElementById("janelaX").addEventListener("click", fechar);
+document.getElementById("janelaFundo").addEventListener("click", fechar);
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") fechar(); });
+document.getElementById("btnLimpar").addEventListener("click", function(){
+  try{ localStorage.removeItem("brilhosDados"); }catch(e){}
+  ids().forEach(function(i){ var e = document.getElementById("d_" + i); if (e) e.value = ""; });
+  [].forEach.call(document.querySelectorAll(".nicho"), function(b){ b.setAttribute("aria-pressed","false"); });
+  document.getElementById("salvo").textContent = "";
+  atualizar();
+});
+document.getElementById("btnCopiar").addEventListener("click", function(){
+  var b = this;
+  function ok(){ b.textContent = "Copiado ✓"; b.classList.add("feito"); }
+  function manual(){
+    var t = document.createElement("textarea");
+    t.value = textoAtual; document.body.appendChild(t); t.select();
+    try{ document.execCommand("copy"); ok(); }catch(e){ b.textContent = "Selecione e copie"; }
+    document.body.removeChild(t);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(textoAtual).then(ok, manual);
+  else manual();
+});
+
+montarCampos();
+carregar();
+
+/* já entrou antes? pula o portão (no fim, quando tudo já existe) */
+var jaEntrou = false;
+try{ jaEntrou = localStorage.getItem(CHAVE) === "1"; }catch(e){}
+if (jaEntrou) liberar();
+</script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio Brilho · docinho</title>
+<meta name="description" content="Modelo de portfólio UGC para as Brilhos, alunas da Rafaela Chagas. Versão docinho.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Brilho v3: vibe de doceria. Papel quadriculado, bordas onduladas, folha de
+   caderno com furinhos, polaroid com fita, selos ondulados e letra de mão.
+   Mesma estrutura do funil e o mesmo bloco DADOS das versões 1 e 2. */
+:root{
+  --creme:#FDF6EE; --papel:#FFFBF6; --vinho:#7A1430; --vermelho:#D2283A; --rosa:#F9C9D6; --rosa2:#F48FB1;
+  --lilas:#C9C6FF; --pessego:#F9A27C; --linha:#F2D3D9; --texto:#5B1024; --apoio:#8A4A5A;
+  --serif:"Fraunces",Georgia,serif; --mao:"Caveat",cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--creme);color:var(--texto);line-height:1.55;font-size:15px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;position:relative}
+.mini{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.02;color:var(--vinho)}
+h2{font-size:clamp(30px,4vw,46px)}
+.mao{font-family:var(--mao);font-weight:700;color:var(--vermelho);line-height:1}
+.quadriculado{background-color:var(--papel);background-image:linear-gradient(var(--linha) 1px,transparent 1px),linear-gradient(90deg,var(--linha) 1px,transparent 1px);background-size:26px 26px}
+
+/* bordas onduladas (a cor vem de --cor) */
+.onda-baixo,.onda-cima{position:relative}
+.onda-baixo::after,.onda-cima::before{content:"";position:absolute;left:0;right:0;height:14px;background:radial-gradient(circle at 14px 0,var(--cor) 13px,transparent 14px) repeat-x;background-size:28px 14px;z-index:3}
+.onda-baixo::after{bottom:-13px}
+.onda-cima::before{top:-13px;transform:scaleY(-1)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:8px;padding:11px 18px;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--vinho)}
+.btn-lilas{background:var(--lilas);color:var(--vinho)}
+.btn-vinho{background:var(--vinho);color:#fff}
+.btn-vermelho{background:var(--vermelho);color:#fff}
+.btn-claro{background:#fff;color:var(--vinho);border:1.5px solid var(--vinho)}
+
+/* adesivos soltos */
+.adesivo{position:absolute;pointer-events:none;font-size:26px;animation:balanca 4s ease-in-out infinite;filter:drop-shadow(0 3px 0 rgba(122,20,48,.15))}
+@keyframes balanca{50%{transform:rotate(12deg) translateY(-6px)}}
+
+/* aviso + menu */
+.modelo{background:var(--vinho);color:var(--rosa);font-size:12px;text-align:center;padding:8px 16px;letter-spacing:.02em}
+.modelo b{color:#fff}
+.menu{--cor:var(--rosa);background:var(--rosa);position:sticky;top:0;z-index:40}
+.menu .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-top:14px;padding-bottom:12px}
+.menu nav{display:flex;gap:22px}
+.menu nav a{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vinho)}
+.menu nav a:hover{color:var(--vermelho)}
+.menu nav:last-child{justify-content:flex-end}
+.menu .logo{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--vinho);letter-spacing:-.02em}
+.menu .logo span{color:var(--vermelho)}
+
+/* capa */
+.capa{padding:70px 0 80px;overflow:hidden}
+.capa-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.capa .mini{color:var(--vinho);margin-bottom:18px}
+.capa h1{font-size:clamp(46px,6vw,78px);margin-bottom:16px}
+.capa .funcao{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--vermelho);margin-bottom:12px}
+.capa .frase{max-width:380px;color:var(--apoio);margin-bottom:24px}
+.selos{display:flex;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.selo{position:relative;width:92px;height:92px;display:grid;place-items:center;text-align:center}
+.selo svg{position:absolute;inset:0;width:100%;height:100%}
+.selo div{position:relative;line-height:1.05}
+.selo b{display:block;font-family:var(--serif);font-size:22px;font-weight:600}
+.selo small{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.selo:nth-child(1){color:var(--vinho);rotate:-6deg}
+.selo:nth-child(2){color:#fff;rotate:4deg}
+.selo:nth-child(3){color:var(--vinho);rotate:-3deg}
+.seta{width:120px;margin:-6px 0 0 160px;display:block}
+.polaroid-capa{position:relative;justify-self:center;width:min(330px,80vw)}
+.polaroid{background:#fff;padding:12px 12px 46px;box-shadow:0 14px 30px -14px rgba(122,20,48,.45);position:relative}
+.polaroid .foto{aspect-ratio:4/5;overflow:hidden;background:var(--rosa)}
+.polaroid .foto img{width:100%;height:100%;object-fit:cover}
+.polaroid figcaption{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--mao);font-size:24px;color:var(--vinho)}
+.fita{position:absolute;width:90px;height:26px;background:rgba(210,40,58,.75);z-index:3}
+.fita.rosa{background:rgba(244,143,177,.8)}
+.polaroid-capa .polaroid{rotate:3deg}
+.polaroid-capa .f1{top:-10px;left:-18px;rotate:-28deg}
+.polaroid-capa .f2{bottom:30px;right:-24px;rotate:-24deg}
+.bilhete{position:absolute;right:-26px;top:-28px;z-index:4;font-family:var(--mao);font-size:26px;color:var(--vermelho);rotate:10deg;text-align:center;line-height:.95}
+.etiqueta-papel{position:absolute;left:-54px;bottom:62px;z-index:4;background:#fff;border:1.5px solid var(--vinho);border-radius:6px;padding:8px 14px;rotate:-6deg;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.etiqueta-papel em{display:block;font-style:normal;font-family:var(--mao);font-size:20px;letter-spacing:0;text-transform:none;color:var(--vermelho)}
+
+/* lacuna */
+.lacuna{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px;color:var(--vinho);
+  background:repeating-linear-gradient(90deg,var(--rosa) 0 12px,#FCE4EB 12px 24px)}
+.lacuna b{font-size:26px;line-height:1}
+.lacuna strong{font-family:var(--serif);font-size:16px;font-weight:600}
+.lacuna span{font-size:12px;max-width:210px;color:var(--apoio)}
+
+/* sobre mim: faixa vermelha com folha de caderno */
+.faixa-vermelha{background:var(--vermelho);padding:60px 0 64px}
+.caderno{background:var(--papel);border-radius:4px;padding:56px 44px 40px;position:relative}
+.caderno::before{content:"";position:absolute;left:18px;right:18px;top:-12px;height:26px;background:radial-gradient(circle,var(--vermelho) 11px,transparent 12px) repeat-x;background-size:34px 26px;background-position:center}
+.sobre-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.sobre-grid>*{min-width:0}
+.sobre-grid .polaroid{rotate:-3deg}
+.sobre-grid .polaroid .fita{top:-12px;left:50%;margin-left:-45px;rotate:-4deg}
+.sobre .mini{color:var(--vermelho)}
+.sobre h2{margin:8px 0 14px}
+.sobre p.texto{color:var(--apoio);margin-bottom:22px}
+.difs{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--vinho)}
+.difs div{padding:14px;border-right:1.5px solid var(--vinho);background:#fff}
+.difs div:last-child{border-right:0}
+.difs div:first-child{background:var(--vinho);color:#fff}
+.difs div:first-child span{color:var(--rosa)}
+.difs em{font-style:normal;font-size:22px;display:block;margin-bottom:6px}
+.difs b{display:block;font-size:14px;font-weight:700;line-height:1.25;margin-bottom:4px}
+.difs span{font-size:12px;color:var(--apoio);display:block;line-height:1.4}
+.formada{margin-top:18px;display:flex;align-items:center;gap:12px;background:var(--rosa);border-radius:999px;padding:8px 18px 8px 8px;width:max-content;max-width:100%}
+.formada i{width:34px;height:34px;border-radius:50%;background:var(--vinho);color:#fff;display:grid;place-items:center;font-style:normal;flex-shrink:0}
+.formada span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vinho)}
+.psiu{margin-top:22px;background:var(--rosa);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.psiu span{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vinho)}
+
+/* destaques: creme + listras rosa */
+.destaques-sec{display:grid;grid-template-columns:.85fr 1.15fr;min-height:560px}
+.destaques-sec .lado-texto{padding:70px 40px 70px max(24px,calc((100vw - 1040px)/2 + 24px));display:flex;flex-direction:column;justify-content:center}
+.destaques-sec .mini{color:var(--vinho);margin-bottom:14px}
+.destaques-sec h2{margin-bottom:14px}
+.destaques-sec p{color:var(--apoio);max-width:330px;margin-bottom:22px}
+.listras{background:repeating-linear-gradient(90deg,var(--rosa) 0 18px,#FFF 18px 36px);position:relative;display:flex;align-items:center;justify-content:center;padding:50px 30px}
+.mesa{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;max-width:560px}
+.mesa .vid-pol{width:150px}
+.mesa .vid-pol:nth-child(1){width:190px;rotate:-4deg;order:0}
+.mesa .vid-pol:nth-child(2){rotate:3deg}
+.mesa .vid-pol:nth-child(3){rotate:-2deg}
+.mesa .vid-pol:nth-child(4){rotate:4deg}
+.mesa .vid-pol:nth-child(5){rotate:-3deg}
+
+/* cartão de vídeo em polaroid */
+.vid-pol{background:#fff;padding:8px 8px 34px;box-shadow:0 10px 22px -12px rgba(122,20,48,.5);position:relative;transition:transform .25s}
+.vid-pol:hover{transform:translateY(-6px) rotate(0deg)}
+.vid-pol .fita{width:60px;height:18px;top:-9px;left:50%;margin-left:-30px;rotate:-3deg}
+.vid{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--rosa)}
+.vid.tem{cursor:pointer}
+.vid img,.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid video{opacity:0;transition:opacity .3s}
+.vid.tocando video{opacity:1}
+.vid-pol .leg{position:absolute;left:6px;right:6px;bottom:5px;text-align:center;font-family:var(--mao);font-size:19px;color:var(--vinho);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vid-pol .res{position:absolute;top:-16px;right:-18px;z-index:4;width:70px;height:70px;display:grid;place-items:center;text-align:center;color:#fff;rotate:10deg}
+.vid-pol .res svg{position:absolute;inset:0}
+.vid-pol .res span{position:relative;font-size:12px;font-weight:700;line-height:1.1}
+.vid .lacuna b{font-size:22px}
+.vid .lacuna strong{font-size:14px}
+
+.xadrez{height:22px;background:repeating-conic-gradient(var(--vinho) 0 25%,var(--rosa) 0 50%) 0 0/22px 22px}
+
+/* nichos: lilás com cartão ondulado */
+.lilas-sec{background:var(--lilas);padding:80px 0 90px}
+.cartao-onda{--r:16px;background:var(--papel);padding:60px 48px 54px;text-align:center;position:relative;
+  -webkit-mask:radial-gradient(var(--r) at var(--r) var(--r),#000 99%,#0000) 0 0/calc(2*var(--r)) calc(2*var(--r)) round,linear-gradient(#000 0 0) 50%/calc(100% - 2*var(--r)) calc(100% - 2*var(--r)) no-repeat;
+  mask:radial-gradient(var(--r) at var(--r) var(--r),#000 99%,#0000) 0 0/calc(2*var(--r)) calc(2*var(--r)) round,linear-gradient(#000 0 0) 50%/calc(100% - 2*var(--r)) calc(100% - 2*var(--r)) no-repeat}
+.tag-topo{display:inline-block;background:var(--rosa);color:var(--vinho);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px}
+.abas{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0 10px}
+.aba{border:1.5px solid var(--vinho);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--vinho);background:#fff;transition:background .2s}
+.aba[aria-selected=true]{background:var(--vinho);color:#fff}
+.alerta{display:inline-block;font-family:var(--mao);font-size:20px;color:var(--vermelho);margin:4px 0 6px}
+
+/* nichos: uma página por nicho */
+.nichos-cab{text-align:center;margin-bottom:34px}
+.atalhos{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}
+.atalhos a{border:1.5px solid var(--vinho);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--vinho);background:#fff;transition:background .2s,color .2s}
+.atalhos a:hover{background:var(--vinho);color:#fff}
+.paginas{display:grid;gap:40px}
+.pagina{text-align:left;padding:40px 44px 34px}
+.pag-topo{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+.pag-topo .tag-topo{margin:0}
+.pag-topo h3{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);color:var(--vinho);line-height:1}
+.pag-topo .mao{font-size:24px}
+.pag-topo .setas-car{margin-left:auto}
+.setas-car button{background:var(--vinho);color:#fff}
+.pagina .vid-pol:nth-child(odd){rotate:-2deg}
+.pagina .vid-pol:nth-child(even){rotate:2deg}
+.pagina .vid-pol:hover{transform:translateY(-6px) rotate(0)}
+/* carrossel de vídeos por nicho: 4 por vez, setas e arrasto */
+.faixa-vids{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:14px 4px 18px;scrollbar-width:thin}
+.faixa-vids>*{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start}
+.setas-car{display:flex;gap:8px}
+.setas-car button{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:18px;line-height:1;transition:transform .15s}
+.setas-car button:hover{transform:scale(1.08)}
+@media (max-width:900px){.faixa-vids>*{flex-basis:calc((100% - 18px)/2)}}
+@media (max-width:520px){.faixa-vids>*{flex-basis:70%}}
+
+/* feedback */
+.feedback{padding:80px 0}
+.feedback .cab{text-align:center;margin-bottom:40px}
+.feedback .mini{color:var(--vermelho);margin-bottom:8px;display:block}
+.bilhetes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.nota{background:#fff;padding:26px 22px 22px;position:relative;box-shadow:0 12px 26px -16px rgba(122,20,48,.5);min-height:200px;display:flex;flex-direction:column;gap:14px}
+.nota:nth-child(1){rotate:-2deg;background:#FFF3F6}
+.nota:nth-child(2){rotate:1.5deg}
+.nota:nth-child(3){rotate:-1deg;background:#F6F5FF}
+.nota .fita{top:-12px;left:50%;margin-left:-45px;rotate:3deg}
+.nota p{font-family:var(--serif);font-size:17px;line-height:1.4;color:var(--vinho)}
+.nota .quem{margin-top:auto;font-family:var(--mao);font-size:22px;color:var(--vermelho)}
+.nota .quem small{display:block;font-family:"DM Sans",sans-serif;font-size:12px;color:var(--apoio)}
+.nota.vazia{align-items:center;justify-content:center;text-align:center}
+.nota.vazia b{font-size:26px}
+.nota.vazia strong{font-family:var(--serif);font-size:17px;color:var(--vinho)}
+.nota.vazia span{font-size:12px;color:var(--apoio)}
+.marcas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:34px}
+.marcas span{border:1.5px dashed var(--vinho);border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vinho)}
+
+/* contato */
+.contato-sec{background:repeating-linear-gradient(90deg,var(--rosa) 0 18px,#FFF 18px 36px);padding:80px 0}
+.contato-sec .caderno{max-width:760px;margin:0 auto;text-align:center}
+.contato-sec .caderno::before{background:radial-gradient(circle,var(--rosa2) 11px,transparent 12px) repeat-x;background-size:34px 26px;background-position:center}
+.contato-sec .mini{color:var(--vermelho)}
+.contato-sec h2{margin:10px 0 12px;font-size:clamp(32px,4.6vw,54px)}
+.contato-sec p.sub{color:var(--apoio);max-width:420px;margin:0 auto 22px}
+.contato-sec .ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.duvidas{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:32px;border:1.5px solid var(--vinho);text-align:left}
+.duvidas div{padding:14px 16px;border-bottom:1.5px solid var(--vinho);background:#fff}
+.duvidas div:nth-child(odd){border-right:1.5px solid var(--vinho)}
+.duvidas div:nth-last-child(-n+2){border-bottom:0}
+.duvidas h4{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--vinho);margin-bottom:2px}
+.duvidas p{font-size:13px;color:var(--apoio)}
+footer{--cor:var(--vinho);background:var(--vinho);color:var(--rosa);padding:30px 0 26px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer .mao{color:#fff;font-size:24px;text-transform:none;letter-spacing:0}
+
+.modal{position:fixed;inset:0;z-index:100;background:rgba(122,20,48,.75);display:none;align-items:center;justify-content:center;padding:24px}
+.modal.on{display:flex}
+.modal .polaroid{padding:10px 10px 40px;rotate:-1deg}
+.modal video{max-height:78vh;max-width:min(88vw,420px);background:#000}
+.modal .polaroid figcaption{font-size:22px}
+.fechar{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--vinho);font-size:22px;display:grid;place-items:center}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:900px){
+  .menu nav{display:none}
+  .menu .wrap{grid-template-columns:1fr;justify-items:center}
+  .capa-grid,.sobre-grid{grid-template-columns:1fr}
+  .seta{display:none}
+  .polaroid-capa{margin-top:20px;max-width:290px}
+  .bilhete{right:-6px}
+  .etiqueta-papel{left:-8px}
+  .caderno{padding:46px 22px 28px}
+  .sobre-grid .polaroid{max-width:280px;margin:0 auto}
+  .difs{grid-template-columns:1fr}
+  .difs div{border-right:0;border-bottom:1.5px solid var(--vinho)}
+  .difs div:last-child{border-bottom:0}
+  .destaques-sec{grid-template-columns:1fr}
+  .destaques-sec .lado-texto{padding:60px 24px 30px}
+  .bilhetes{grid-template-columns:1fr}
+  .cartao-onda{padding:40px 18px 34px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .mesa .vid-pol{width:calc(50% - 10px)}
+  .mesa .vid-pol:nth-child(1){width:70%}
+  .pagina{padding:34px 18px 26px}
+  .duvidas{grid-template-columns:1fr}
+  .adesivo{display:none}
+  .formada{width:auto;border-radius:18px}
+  .duvidas div{border-right:0!important;border-bottom:1.5px solid var(--vinho)!important}
+  .duvidas div:last-child{border-bottom:0!important}
+  .selo{width:84px;height:84px}
+}
+/* selo Brilho · aluna/aluno Rafa Chagas */
+.selo-rc{position:absolute;z-index:7;width:128px;height:128px;pointer-events:none}
+.selo-rc svg{width:100%;height:100%;animation:gira-selo 18s linear infinite;overflow:visible}
+.selo-rc .meio{position:absolute;inset:0;display:grid;place-items:center}
+@keyframes gira-selo{to{transform:rotate(360deg)}}
+@media (max-width:520px){.selo-rc{width:96px;height:96px}}
+@media (prefers-reduced-motion:reduce){.selo-rc svg{animation:none}}
+.polaroid-capa .selo-rc{left:-48px;top:34%}
+.polaroid-capa .selo-rc svg{animation-duration:26s}
+</style>
+</head>
+<body>
+
+<div class="modelo">✦ Modelo pras <b>Brilhos</b> · versão docinho. Troque os dados no bloco <b>DADOS</b> no fim do arquivo: o que estiver listrado ainda falta preencher.</div>
+
+<header class="menu onda-baixo">
+  <div class="wrap">
+    <nav><a href="#sobre">Sobre mim</a><a href="#destaques">Destaques</a><a href="#nichos">Nichos</a></nav>
+    <a href="#capa" class="logo" id="logo"></a>
+    <nav><a href="#feedback">O que as marcas falam</a><a href="#contato">Contato</a></nav>
+  </div>
+</header>
+
+<!-- 1. CAPA -->
+<section class="capa quadriculado" id="capa">
+  <span class="adesivo" style="left:4%;top:62%">💄</span>
+  <span class="adesivo" style="left:44%;top:12%;animation-delay:-1s">✨</span>
+  <span class="adesivo" style="right:5%;top:16%;animation-delay:-2s">🍒</span>
+  <span class="adesivo" style="right:40%;bottom:10%;animation-delay:-3s;font-size:22px">⭐</span>
+  <div class="wrap capa-grid">
+    <div>
+      <p class="mini">(UGC creator · Brilho da Rafa Chagas)</p>
+      <h1 id="nome"></h1>
+      <p class="funcao" id="funcao"></p>
+      <p class="frase" id="frase"></p>
+      <div class="selos" id="selos"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a href="#destaques" class="btn btn-lilas">Ver meus melhores vídeos</a><a href="#contato" class="btn btn-claro">Falar comigo</a></div>
+      <svg class="seta" viewBox="0 0 140 50" fill="none" aria-hidden="true"><path d="M4 30c14-22 36-24 40-8 3 13-16 15-12 2 6-18 40-20 92-6" stroke="#7A1430" stroke-width="2.2" stroke-linecap="round"/><path d="M114 10l12 8-13 6" stroke="#7A1430" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="polaroid-capa">
+      <div class="selo-rc" role="img" aria-label="Brilho, aluna Rafa Chagas"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M121.0,60.0 L120.5,62.1 L119.2,64.1 L117.2,66.0 L114.9,67.7 L112.7,69.3 L110.8,70.8 L109.6,72.4 L109.1,74.1 L109.4,76.1 L110.3,78.3 L111.4,80.8 L112.6,83.4 L113.3,86.0 L113.5,88.4 L112.8,90.5 L111.4,92.1 L109.2,93.2 L106.6,93.8 L103.7,94.2 L101.0,94.4 L98.6,94.8 L96.8,95.5 L95.5,96.8 L94.8,98.6 L94.4,101.0 L94.2,103.7 L93.8,106.6 L93.2,109.2 L92.1,111.4 L90.5,112.8 L88.4,113.5 L86.0,113.3 L83.4,112.6 L80.8,111.4 L78.3,110.3 L76.1,109.4 L74.1,109.1 L72.4,109.6 L70.8,110.8 L69.3,112.7 L67.7,114.9 L66.0,117.2 L64.1,119.2 L62.1,120.5 L60.0,121.0 L57.9,120.5 L55.9,119.2 L54.0,117.2 L52.3,114.9 L50.7,112.7 L49.2,110.8 L47.6,109.6 L45.9,109.1 L43.9,109.4 L41.7,110.3 L39.2,111.4 L36.6,112.6 L34.0,113.3 L31.6,113.5 L29.5,112.8 L27.9,111.4 L26.8,109.2 L26.2,106.6 L25.8,103.7 L25.6,101.0 L25.2,98.6 L24.5,96.8 L23.2,95.5 L21.4,94.8 L19.0,94.4 L16.3,94.2 L13.4,93.8 L10.8,93.2 L8.6,92.1 L7.2,90.5 L6.5,88.4 L6.7,86.0 L7.4,83.4 L8.6,80.8 L9.7,78.3 L10.6,76.1 L10.9,74.1 L10.4,72.4 L9.2,70.8 L7.3,69.3 L5.1,67.7 L2.8,66.0 L0.8,64.1 L-0.5,62.1 L-1.0,60.0 L-0.5,57.9 L0.8,55.9 L2.8,54.0 L5.1,52.3 L7.3,50.7 L9.2,49.2 L10.4,47.6 L10.9,45.9 L10.6,43.9 L9.7,41.7 L8.6,39.2 L7.4,36.6 L6.7,34.0 L6.5,31.6 L7.2,29.5 L8.6,27.9 L10.8,26.8 L13.4,26.2 L16.3,25.8 L19.0,25.6 L21.4,25.2 L23.2,24.5 L24.5,23.2 L25.2,21.4 L25.6,19.0 L25.8,16.3 L26.2,13.4 L26.8,10.8 L27.9,8.6 L29.5,7.2 L31.6,6.5 L34.0,6.7 L36.6,7.4 L39.2,8.6 L41.7,9.7 L43.9,10.6 L45.9,10.9 L47.6,10.4 L49.2,9.2 L50.7,7.3 L52.3,5.1 L54.0,2.8 L55.9,0.8 L57.9,-0.5 L60.0,-1.0 L62.1,-0.5 L64.1,0.8 L66.0,2.8 L67.7,5.1 L69.3,7.3 L70.8,9.2 L72.4,10.4 L74.1,10.9 L76.1,10.6 L78.3,9.7 L80.8,8.6 L83.4,7.4 L86.0,6.7 L88.4,6.5 L90.5,7.2 L92.1,8.6 L93.2,10.8 L93.8,13.4 L94.2,16.3 L94.4,19.0 L94.8,21.4 L95.5,23.2 L96.8,24.5 L98.6,25.2 L101.0,25.6 L103.7,25.8 L106.6,26.2 L109.2,26.8 L111.4,27.9 L112.8,29.5 L113.5,31.6 L113.3,34.0 L112.6,36.6 L111.4,39.2 L110.3,41.7 L109.4,43.9 L109.1,45.9 L109.6,47.6 L110.8,49.2 L112.7,50.7 L114.9,52.3 L117.2,54.0 L119.2,55.9 L120.5,57.9 L121.0,60.0Z" fill="#7A1430"/><defs><path id="sb3" d="M60,60 m-41,0 a41,41 0 1,1 82,0 a41,41 0 1,1 -82,0"/></defs><text style="font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;fill:#F9C9D6"><textPath href="#sb3" textLength="256" lengthAdjust="spacing">brilho ♥ aluna rafa chagas ♥ </textPath></text></svg><span class="meio" style="font-size:28px">🍒</span></div>
+      <span class="bilhete">me chama<br>pra brilhar ✦</span>
+      <span class="fita f1"></span><span class="fita rosa f2"></span>
+      <figure class="polaroid"><div class="foto" id="fotoCapa"></div><figcaption id="legCapa"></figcaption></figure>
+      <span class="etiqueta-papel">Vídeos feitos por:<em id="assinatura"></em></span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SOBRE MIM -->
+<section class="faixa-vermelha" id="sobre">
+  <div class="wrap">
+    <div class="caderno">
+      <div class="sobre-grid">
+        <figure class="polaroid"><span class="fita"></span><div class="foto" id="fotoSobre"></div><figcaption>eu, gravando ✦</figcaption></figure>
+        <div class="sobre">
+          <p class="mini">Sobre mim</p>
+          <h2 id="sobreTitulo"></h2>
+          <p class="texto" id="sobreTexto"></p>
+          <div class="difs" id="difs"></div>
+          <div class="formada"><i>✦</i><span>Formada no Método Profissão do Futuro</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DESTAQUES -->
+<section class="destaques-sec" id="destaques">
+  <div class="lado-texto">
+    <p class="mini">Destaques</p>
+    <h2>Meus melhores vídeos</h2>
+    <p>Os mais fortes vêm primeiro. Clique em qualquer um pra assistir com som.</p>
+    <div><a href="#nichos" class="btn btn-vermelho">Ver conteúdo por nichos</a></div>
+  </div>
+  <div class="listras"><div class="mesa" id="destaquesGrid"></div></div>
+</section>
+
+<div class="xadrez" aria-hidden="true"></div>
+
+<!-- 4. CONTEÚDO POR NICHOS: uma página por nicho, com carrossel -->
+<section class="lilas-sec" id="nichos">
+  <span class="adesivo" style="left:5%;top:60px">🍬</span>
+  <span class="adesivo" style="right:6%;top:90px;animation-delay:-2s">💗</span>
+  <div class="wrap">
+    <div class="nichos-cab">
+      <span class="tag-topo">Conteúdo por nichos</span>
+      <h2>Ache o vídeo do seu nicho</h2>
+      <div class="atalhos" id="atalhos"></div>
+    </div>
+    <div class="paginas" id="paginas"></div>
+  </div>
+</section>
+
+<!-- 5. FEEDBACK -->
+<section class="feedback quadriculado" id="feedback">
+  <div class="wrap">
+    <div class="cab"><span class="mini">Feedback</span><h2>O que as marcas falam</h2></div>
+    <div class="bilhetes" id="bilhetes"></div>
+    <div class="marcas" id="marcas"></div>
+  </div>
+</section>
+
+<!-- 6. CONTATO -->
+<section class="contato-sec" id="contato">
+  <div class="wrap">
+    <div class="caderno">
+      <p class="mini">Contato · vamos trabalhar juntas?</p>
+      <h2>Seu produto merece um vídeo que brilha <span class="mao" style="font-size:.8em">✦</span></h2>
+      <p class="sub">Me conta o que você vende e o que precisa. Respondo com a proposta.</p>
+      <div class="ctas" id="ctasContato"></div>
+      <div class="duvidas" id="duvidas"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="onda-cima"><div class="wrap"><span id="rodapeNome"></span><span class="mao">feito com brilho ✦</span><span>Brilho · formada pela Rafaela Chagas</span></div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Vídeo"><button class="fechar" id="fechar" aria-label="Fechar">×</button><figure class="polaroid"><video id="modalVid" controls playsinline></video><figcaption id="modalLeg"></figcaption></figure></div>
+
+<script>
+/* ================== DADOS: a aluna só mexe aqui ==================
+   Igual às versões 1 e 2. Deixe "" no que ainda não tem: aparece a
+   lacuna listrada com a dica. Vídeo = link de um .mp4. */
+const DADOS = {
+  nome: "Seu Nome",
+  instagram: "seuuser",
+  whatsapp: "",                 // só números, com DDD: 5511999999999
+  email: "voce@email.com",
+  nichosResumo: "beleza, casa e pets",
+  frase: "Eu crio vídeos que parecem conversa de amiga e vendem como anúncio, com roteiro meu e edição pronta pra rodar.",
+  provas: [ ["30+", "vídeos"], ["12", "marcas"], ["7 dias", "entrega"] ],
+  fotoCapa: "",                 // retrato seu: rosto, luz natural, sem selfie
+  fotoSobre: "",
+  sobreTitulo: "Prazer, eu sou a [seu nome].",
+  sobreTexto: "Conte em 3 linhas quem você é, onde mora, sua rotina e por que as marcas do seu nicho combinam com você. Vivência real convence mais que adjetivo.",
+  diferenciais: [
+    ["🔎","Estudo a dor do seu cliente","Entendo o público e o que trava a compra."],
+    ["✍️","Roteiro meu, aprovado por você","Enviado antes da gravação."],
+    ["🎬","Edição pronta pra anúncio","Gancho forte e som tratado."],
+  ],
+  // os 5 melhores, do mais forte pro menos forte
+  destaques: [
+    {titulo:"", nicho:"Skincare", formato:"ADS", video:"", capa:"", res:""},
+    {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
+    {titulo:"", nicho:"Pets", formato:"Nativo", video:"", capa:""},
+    {titulo:"", nicho:"Skincare", formato:"Review", video:"", capa:""},
+    {titulo:"", nicho:"Casa", formato:"Tutorial", video:"", capa:""},
+  ],
+  // um nicho = uma página com carrossel (4 por vez). Mínimo 3 vídeos por nicho, ideal 4 ou mais
+  nichos: [
+    {nome:"Skincare", videos:[{},{},{},{},{}]},
+    {nome:"Casa", videos:[{},{},{},{}]},
+    {nome:"Pets", videos:[{},{}]},
+  ],
+  // prints ou frases reais de marcas. Nunca invente
+  elogios: [
+    {texto:"", marca:"", detalhe:""},
+    {texto:"", marca:"", detalhe:""},
+    {texto:"", marca:"", detalhe:""},
+  ],
+  marcas: [],
+  duvidas: [
+    ["Onde posso usar?","Redes sociais, tráfego pago, site, e-commerce e marketplace."],
+    ["Por quanto tempo?","Orgânico e tráfego pago com prazos combinados na proposta."],
+    ["Tem exclusividade?","Exclusividade no seu nicho pede um investimento extra."],
+    ["Qual o prazo?","Até 7 dias depois que o produto chega."],
+  ],
+};
+/* ================================================================= */
+
+const D=DADOS, $=id=>document.getElementById(id);
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const lacuna=(icone,titulo,dica)=>`<div class="lacuna"><b>${icone}</b><strong>${titulo}</strong><span>${dica}</span></div>`;
+// selo ondulado em SVG (n ondas)
+function onda(cor,n=12){let d="";for(let i=0;i<=360;i+=2){const a=i*Math.PI/180,r=44+4*Math.cos(n*a);d+=(i?"L":"M")+(50+r*Math.cos(a)).toFixed(1)+","+(50+r*Math.sin(a)).toFixed(1)}return `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="${d}Z" fill="${cor}"/></svg>`}
+
+const primeiro=D.nome.split(" ")[0];
+$("logo").innerHTML=`${esc(D.nome.toLowerCase())}<span>✦</span>`;
+$("nome").textContent=D.nome;
+$("funcao").textContent=`UGC creator de ${D.nichosResumo}`;
+$("frase").textContent=D.frase;
+const coresSelo=["#F9A27C","#7A1430","#F9C9D6"];
+$("selos").innerHTML=D.provas.slice(0,3).map(([n,t],i)=>`<div class="selo">${onda(coresSelo[i],i===1?8:12)}<div><b>${esc(n)}</b><small>${esc(t)}</small></div></div>`).join("");
+$("fotoCapa").innerHTML=D.fotoCapa?`<img src="${esc(D.fotoCapa)}" alt="${esc(D.nome)}">`:lacuna("📸","Sua foto de capa","Retrato com rosto, luz natural e ambiente real. Sem selfie.");
+$("legCapa").textContent=`oi, eu sou a ${primeiro} ✦`;
+$("assinatura").textContent=D.nome;
+$("fotoSobre").innerHTML=D.fotoSobre?`<img src="${esc(D.fotoSobre)}" alt="">`:lacuna("🙋‍♀️","Foto sua no dia a dia","Gravando, em casa, com produto na mão.");
+$("sobreTitulo").textContent=D.sobreTitulo;
+$("sobreTexto").textContent=D.sobreTexto;
+$("difs").innerHTML=D.diferenciais.map(([e,t,s])=>`<div><em>${e}</em><b>${esc(t)}</b><span>${esc(s)}</span></div>`).join("");
+
+function polaroid(v,dica,legenda){
+  const fita=`<span class="fita ${Math.random()>.5?"rosa":""}"></span>`;
+  const res=v&&v.res?`<span class="res">${onda("#D2283A",10)}<span>🏆<br>${esc(v.res)}</span></span>`:"";
+  if(!v||!v.video) return `<div class="vid-pol">${fita}${res}<div class="vid">${lacuna("▶",v&&v.nicho?`Vídeo de ${esc(v.nicho)}`:"Seu vídeo",dica)}</div><span class="leg">${esc(legenda)}</span></div>`;
+  return `<div class="vid-pol">${fita}${res}<div class="vid tem" data-src="${esc(v.video)}" data-t="${esc(v.titulo)}" tabindex="0" role="button" aria-label="Assistir ${esc(v.titulo)}">
+    ${v.capa?`<img src="${esc(v.capa)}" alt="" loading="lazy">`:""}<video muted loop playsinline preload="metadata" src="${esc(v.video)}"></video></div><span class="leg">${esc(v.titulo||legenda)}</span></div>`;
+}
+$("destaquesGrid").innerHTML=D.destaques.map((v,i)=>polaroid(v,i===0?"O seu vídeo mais forte. Com resultado, ganha selo.":"Os melhores na frente.",`${v.nicho||"vídeo"} · ${v.formato||""}`)).join("");
+
+const slug=t=>t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
+$("atalhos").innerHTML=D.nichos.map(n=>`<a href="#nicho-${slug(n.nome)}">${esc(n.nome)} (${n.videos.length})</a>`).join("");
+$("paginas").innerHTML=D.nichos.map((n,i)=>`
+  <div class="cartao-onda pagina" id="nicho-${slug(n.nome)}">
+    <div class="pag-topo">
+      <span class="tag-topo">página ${String(i+1).padStart(2,"0")}</span>
+      <h3>${esc(n.nome)}</h3>
+      <span class="mao">${n.videos.length} vídeos ${n.videos.length<3?"· psiu, mínimo 3!":""}</span>
+      <div class="setas-car"><button data-anda="-1" data-alvo="faixa-${i}" aria-label="Vídeos anteriores">‹</button><button data-anda="1" data-alvo="faixa-${i}" aria-label="Próximos vídeos">›</button></div>
+    </div>
+    <div class="faixa-vids" id="faixa-${i}">${n.videos.map(v=>polaroid({...v,nicho:n.nome},"Gancho próprio e som tratado.",v.titulo||n.nome.toLowerCase())).join("")}</div>
+  </div>`).join("");
+const pedido=(new URLSearchParams(location.search).get("c")||"").toLowerCase();
+const alvo=pedido&&document.getElementById("nicho-"+slug(pedido));
+if(alvo) setTimeout(()=>alvo.scrollIntoView({behavior:"smooth"}),300);
+// carrossel: setas andam uma "tela" de vídeos
+document.addEventListener("click",e=>{const b=e.target.closest("[data-anda]");if(!b)return;const f=document.getElementById(b.dataset.alvo);f.scrollBy({left:f.clientWidth*Number(b.dataset.anda),behavior:"smooth"})});
+
+$("bilhetes").innerHTML=D.elogios.map(e=>e.texto?`
+  <div class="nota"><span class="fita rosa"></span><p>“${esc(e.texto)}”</p><div class="quem">${esc(e.marca)}<small>${esc(e.detalhe)}</small></div></div>`:
+  `<div class="nota vazia"><span class="fita rosa"></span><b>💌</b><strong>Print do elogio da marca</strong><span>Frase real de cliente, com o nome da marca. Nunca invente.</span></div>`).join("");
+$("marcas").innerHTML=D.marcas.length?D.marcas.map(m=>`<span>${esc(m)}</span>`).join(""):`<span>marcas que você já atendeu aparecem aqui</span>`;
+
+const msg=encodeURIComponent(`Oi, ${D.nome}! Vi seu portfólio e quero conversar sobre vídeos pra minha marca.`);
+$("ctasContato").innerHTML=(D.whatsapp?`<a class="btn btn-vermelho" href="https://wa.me/${esc(D.whatsapp)}?text=${msg}" target="_blank" rel="noopener">Chamar no WhatsApp</a>`:`<a class="btn btn-vermelho" href="mailto:${esc(D.email)}?subject=${encodeURIComponent("Quero um vídeo UGC")}&body=${msg}">Pedir orçamento</a>`)+
+  `<a class="btn btn-claro" href="https://instagram.com/${esc(D.instagram)}" target="_blank" rel="noopener">@${esc(D.instagram)}</a>`;
+$("duvidas").innerHTML=D.duvidas.map(([q,a])=>`<div><h4>${esc(q)}</h4><p>${esc(a)}</p></div>`).join("");
+$("rodapeNome").textContent=`${D.nome} · UGC creator`;
+
+// vídeos
+document.addEventListener("mouseover",e=>{const c=e.target.closest(".vid.tem");if(!c||c.classList.contains("tocando"))return;c.querySelector("video").play().then(()=>c.classList.add("tocando")).catch(()=>{})});
+document.addEventListener("mouseout",e=>{const c=e.target.closest(".vid.tem");if(!c||c.contains(e.relatedTarget))return;c.querySelector("video").pause();c.classList.remove("tocando")});
+const modal=$("modal"),mv=$("modalVid");
+function abre(c){mv.src=c.dataset.src;$("modalLeg").textContent=c.dataset.t||"";modal.classList.add("on");mv.play()}
+function fecha(){mv.pause();mv.removeAttribute("src");mv.load();modal.classList.remove("on")}
+document.addEventListener("click",e=>{const c=e.target.closest(".vid.tem");if(c)abre(c)});
+document.addEventListener("keydown",e=>{const c=e.target.closest&&e.target.closest(".vid.tem");if(c&&(e.key==="Enter"||e.key===" ")){e.preventDefault();abre(c)}if(e.key==="Escape")fecha()});
+$("fechar").onclick=fecha;modal.addEventListener("click",e=>{if(e.target===modal)fecha()});
+</script>
+</body>
+</html>

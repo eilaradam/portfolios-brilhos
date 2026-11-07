@@ -100,7 +100,7 @@ section{padding:80px 0}
 .leg small{font-size:13px;color:var(--apoio)}
 
 /* destaques */
-.dest{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.dest{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:0 auto}
 .dest .item:first-child .vid{outline:2px solid var(--roxo);outline-offset:3px}
 .dest .marca{display:inline-block;font-size:12px;font-weight:600;color:var(--roxo);margin-top:8px}
 
@@ -280,13 +280,11 @@ const DADOS = {
     ["Roteiro meu, aprovado por você","Briefing e roteiro enviados antes da gravação."],
     ["Edição pronta pra anúncio","Gancho forte nos primeiros segundos e som tratado."],
   ],
-  // os 5 melhores, do mais forte pro menos forte
+  // os 3 melhores, do mais forte pro menos forte
   destaques: [
     {titulo:"", nicho:"Skincare", formato:"ADS", video:"", capa:"", res:""},
     {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
     {titulo:"", nicho:"Pets", formato:"Nativo", video:"", capa:""},
-    {titulo:"", nicho:"Skincare", formato:"Review", video:"", capa:""},
-    {titulo:"", nicho:"Casa", formato:"Tutorial", video:"", capa:""},
   ],
   // um nicho = uma página com carrossel (4 por vez). Mínimo 3 vídeos por nicho, ideal 4 ou mais
   nichos: [

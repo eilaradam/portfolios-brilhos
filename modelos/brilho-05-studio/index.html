@@ -113,7 +113,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .lilas-sec .cab .alta{font-size:clamp(34px,4.2vw,48px)}
 .lilas-sec .cab .cursiva{font-size:22px;vertical-align:4px;margin-left:4px}
 .lilas-sec .cab p{color:var(--apoio);margin-top:10px}
-.dest-studio{display:grid;grid-template-columns:1.35fr repeat(4,1fr);gap:18px;align-items:end}
+.dest-studio{display:grid;grid-template-columns:1.35fr repeat(2,1fr);gap:18px;align-items:end;max-width:760px;margin:0 auto}
 .dest-studio .item{background:#fff;border:1.5px solid var(--preto);box-shadow:4px 4px 0 var(--preto);padding:10px 10px 14px;transition:transform .2s}
 .dest-studio .item:hover{transform:translate(-2px,-2px)}
 .dest-studio .item:first-child{background:var(--limao)}
@@ -331,13 +331,11 @@ const DADOS = {
     ["✍️","Roteiro meu, aprovado por você","antes da gravação."],
     ["🎬","Edição pronta pra anúncio","gancho forte e som tratado."],
   ],
-  // os 5 melhores, do mais forte pro menos forte
+  // os 3 melhores, do mais forte pro menos forte
   destaques: [
     {titulo:"", nicho:"Skincare", formato:"ADS", video:"", capa:"", res:""},
     {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
     {titulo:"", nicho:"Pets", formato:"Nativo", video:"", capa:""},
-    {titulo:"", nicho:"Skincare", formato:"Review", video:"", capa:""},
-    {titulo:"", nicho:"Casa", formato:"Tutorial", video:"", capa:""},
   ],
   // cada nicho precisa de pelo menos 3 vídeos
   nichos: [
@@ -383,7 +381,7 @@ function video(v,dica){
   if(!v||!v.video) return `<div class="vid">${v&&v.res?`<span class="res">🏆 ${esc(v.res)}</span>`:""}${lacuna("▶",v&&v.nicho?`Vídeo de ${esc(v.nicho)}`:"Seu vídeo",dica)}</div>`;
   return `<div class="vid tem" data-src="${esc(v.video)}" tabindex="0" role="button" aria-label="Assistir ${esc(v.titulo)}">${v.capa?`<img src="${esc(v.capa)}" alt="" loading="lazy">`:""}<video muted loop playsinline preload="metadata" src="${esc(v.video)}"></video>${v.res?`<span class="res">🏆 ${esc(v.res)}</span>`:""}</div>`;
 }
-const rotulos=["o mais forte","queridinho","viralizou","favorito","bônus"];
+const rotulos=["o mais forte","queridinho","viralizou"];
 $("destaquesGrid").innerHTML=D.destaques.map((v,i)=>`
   <div class="item">
     ${video(v,i===0?"O seu vídeo mais forte. Com resultado, ganha selo.":"Os melhores na frente.")}

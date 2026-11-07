@@ -259,7 +259,7 @@ var CAMPOS = [
     {id:"umami", rot:"ID do site no Umami (métricas)", ph:"a1b2c3d4-0000-0000-0000-000000000000", largura:1}
   ]}
 ];
-var NDEST = 5;
+var NDEST = 3;
 
 function montarCampos(){
   var caixa = document.getElementById("campos");
@@ -295,7 +295,7 @@ function montarCampos(){
     n.appendChild(b);
   });
   var d = document.createElement("fieldset"); d.className = "grupo";
-  d.innerHTML = '<legend>Seus 5 melhores vídeos (1.mp4 a 5.mp4 na pasta midia/destaques, do mais forte pro menos forte)</legend>';
+  d.innerHTML = '<legend>Seus 3 melhores vídeos (1.mp4 a 3.mp4 na pasta midia/destaques, do mais forte pro menos forte)</legend>';
   for (var i = 1; i <= NDEST; i++){
     var linha = document.createElement("div"); linha.className = "destaque-linha";
     linha.innerHTML =
@@ -359,7 +359,7 @@ function blocoDados(){
     var l = pega("link" + i), r = pega("res" + i);
     if (l || r) dest.push("  " + i + ".mp4: " + (l || "título ainda não tenho") + (r ? " | resultado: " + r : ""));
   }
-  if (dest.length) linhas.push("Meus 5 melhores vídeos (o 1 é o mais forte):\n" + dest.join("\n"));
+  if (dest.length) linhas.push("Meus 3 melhores vídeos (o 1 é o mais forte):\n" + dest.join("\n"));
   if (!linhas.length){
     return "== MEUS DADOS ==\nAinda não preenchi meus dados. Use placeholders claros (Seu Nome, @seuuser, Marca A) no objeto DADOS e deixe as lacunas listradas com as dicas, pra eu trocar depois.";
   }

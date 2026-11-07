@@ -110,7 +110,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.8vw,44px);lin
 .dest-texto h2{margin:10px 0 6px}
 .squiggle{display:block;width:120px;height:14px;margin:6px 0 22px}
 .dest-texto p{color:var(--cinza);margin-bottom:20px}
-.cards{display:grid;grid-template-columns:1.25fr repeat(4,1fr);gap:12px;align-items:end}
+.cards{display:grid;grid-template-columns:1.25fr repeat(2,1fr);gap:12px;align-items:end;max-width:640px}
 .card .moldura{padding:10px;border-radius:4px}
 .card:nth-child(1) .moldura{background:var(--vermelho)}
 .card:nth-child(2) .moldura{background:var(--preto)}
@@ -326,13 +326,11 @@ const DADOS = {
     ["✍️","Roteiro meu, aprovado por você","Briefing e roteiro enviados antes da gravação."],
     ["🎬","Edição pronta pra anúncio","Gancho forte nos primeiros segundos e som tratado."],
   ],
-  // os 5 melhores, do mais forte pro menos forte
+  // os 3 melhores, do mais forte pro menos forte
   destaques: [
     {titulo:"", nicho:"Tech", formato:"ADS", video:"", capa:"", res:""},
     {titulo:"", nicho:"Fitness", formato:"Review", video:"", capa:""},
     {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
-    {titulo:"", nicho:"Tech", formato:"Tutorial", video:"", capa:""},
-    {titulo:"", nicho:"Fitness", formato:"Nativo", video:"", capa:""},
   ],
   // cada nicho precisa de pelo menos 3 vídeos
   nichos: [

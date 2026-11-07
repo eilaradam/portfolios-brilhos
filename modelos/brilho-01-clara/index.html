@@ -111,7 +111,7 @@ section{padding:100px 0;position:relative}
 .formada span{font-size:14px;color:var(--c1)}
 
 /* vídeos */
-.destaques{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:16px;align-items:end}
+.destaques{display:grid;grid-template-columns:1.3fr repeat(2,1fr);gap:16px;align-items:end;max-width:760px;margin:0 auto}
 .vid{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--lavanda);box-shadow:0 14px 30px -18px rgba(20,20,20,.35);transition:transform .3s}
 .vid.tem{cursor:pointer}
 .vid.tem:hover{transform:translateY(-6px)}
@@ -315,13 +315,11 @@ const DADOS = {
     ["✍️","Roteiro meu, aprovado por você","Briefing e roteiro enviados antes da gravação."],
     ["🎬","Edição pronta pra anúncio","Gancho forte nos primeiros segundos e som tratado."],
   ],
-  // os 5 melhores, do mais forte pro menos forte. "res" = resultado real, se tiver
+  // os 3 melhores, do mais forte pro menos forte. "res" = resultado real, se tiver
   destaques: [
     {titulo:"", nicho:"Skincare", formato:"ADS", video:"", capa:"", res:""},
     {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
     {titulo:"", nicho:"Pets", formato:"Nativo", video:"", capa:""},
-    {titulo:"", nicho:"Skincare", formato:"Review", video:"", capa:""},
-    {titulo:"", nicho:"Casa", formato:"Tutorial", video:"", capa:""},
   ],
   // cada nicho precisa de pelo menos 3 vídeos. Com menos, a página avisa
   nichos: [

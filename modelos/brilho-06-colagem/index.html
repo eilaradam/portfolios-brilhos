@@ -118,7 +118,7 @@ h2{font-family:var(--titulo);font-weight:600;font-size:clamp(30px,3.6vw,42px);li
 .painel .topo{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
 .painel .topo .caps{color:#B7BE3A;font-size:13px}
 .painel .topo h2{color:var(--rosa);margin-left:auto}
-.linha-vids{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:16px;align-items:end}
+.linha-vids{display:grid;grid-template-columns:1.3fr repeat(2,1fr);gap:16px;align-items:end;max-width:760px;margin:0 auto}
 .linha-vids .leg{margin-top:8px;font-weight:700;font-size:13px;color:var(--forte)}
 .linha-vids .leg small{display:block;font-weight:600;font-size:12px;color:var(--apoio)}
 
@@ -341,13 +341,11 @@ const DADOS = {
     ["✍️","Roteiro meu, aprovado por você","antes da gravação."],
     ["🎬","Edição pronta pra anúncio","gancho forte e som tratado."],
   ],
-  // os 5 melhores, do mais forte pro menos forte
+  // os 3 melhores, do mais forte pro menos forte
   destaques: [
     {titulo:"", nicho:"Skincare", formato:"ADS", video:"", capa:"", res:""},
     {titulo:"", nicho:"Casa", formato:"Unboxing", video:"", capa:""},
     {titulo:"", nicho:"Pets", formato:"Nativo", video:"", capa:""},
-    {titulo:"", nicho:"Skincare", formato:"Review", video:"", capa:""},
-    {titulo:"", nicho:"Casa", formato:"Tutorial", video:"", capa:""},
   ],
   // cada nicho precisa de pelo menos 3 vídeos
   nichos: [

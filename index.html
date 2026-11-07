@@ -152,11 +152,11 @@ footer.rodape{text-align:center;padding:10px 0 40px;color:var(--c2);font-size:13
   <header class="topo dentro">
     <span class="selo holo"><b>✦</b> Brilhos · alunos da Rafa Chagas</span>
     <h1>Modelos de <span>portfólio</span> das Brilhos</h1>
-    <p>Escolha o que tem mais a sua cara, copie o prompt e cole no seu Claude. Ele monta o portfólio inteiro, e você troca os textos, as fotos e os vídeos pelos seus.</p>
+    <p>Escolha o que tem mais a sua cara, copie o prompt e cole no Claude Code, dentro da sua pasta do portfólio. Ele monta o portfólio inteiro com os seus textos, fotos e vídeos.</p>
     <div class="passos">
       <div class="passo"><b><i>1</i> Escolha</b><span>Clique em "ver o modelo" pra passear por ele antes de decidir.</span></div>
       <div class="passo"><b><i>2</i> Preencha e copie</b><span>No "copiar prompt", preencha seus dados do lado: o prompt se completa sozinho.</span></div>
-      <div class="passo"><b><i>3</i> Cole no Claude</b><span>Cole, mande, e depois vá pedindo os ajustes até ficar com a sua cara.</span></div>
+      <div class="passo"><b><i>3</i> Cole no Claude Code</b><span>Cole, mande, e depois vá pedindo os ajustes até ficar com a sua cara.</span></div>
     </div>
     <div class="funil"><span>Todos seguem o funil: <b>1</b> capa</span><span><b>2</b> sobre mim</span><span><b>3</b> destaques</span><span><b>4</b> conteúdo por nichos</span><span><b>5</b> o que as marcas falam</span><span><b>6</b> contato</span></div>
       </header>
@@ -176,14 +176,14 @@ footer.rodape{text-align:center;padding:10px 0 40px;color:var(--c2);font-size:13
     <div class="janela__corpo">
       <div class="janela__texto"><pre id="janelaTexto"></pre></div>
       <aside class="janela__form">
-        <p class="form-intro">Preencha o que você já tem. O prompt do lado se completa sozinho e fica salvo no seu navegador pros outros modelos, então você só preenche uma vez.</p>
+        <p class="form-intro">Preencha o que você já tem. O prompt do lado se completa sozinho e fica salvo no seu navegador pros outros modelos, então você só preenche uma vez. Seus vídeos e fotos vão na pasta <b>midia</b>: se ela ainda não existir, o Claude cria e mostra onde colocar cada arquivo.</p>
         <div id="campos"></div>
         <button class="btn-limpar" id="btnLimpar" type="button">Limpar meus dados</button>
         <p class="salvo" id="salvo"></p>
       </aside>
     </div>
     <div class="janela__pe">
-      <span class="dica">Cole no seu Claude e mande. Depois é só ir pedindo os ajustes.</span>
+      <span class="dica">Cole no Claude Code e mande. Depois é só ir pedindo os ajustes.</span>
       <button class="btn-copiar" id="btnCopiar">Copiar prompt</button>
     </div>
   </div>
@@ -252,6 +252,11 @@ var CAMPOS = [
     {id:"videos", rot:"Vídeos gravados", ph:"30+", largura:3},
     {id:"nmarcas", rot:"Marcas atendidas", ph:"12", largura:3},
     {id:"prazo", rot:"Prazo de entrega", ph:"7 dias", largura:3}
+  ]},
+  {grupo:"Quando o site estiver pronto (pode deixar em branco agora)", itens:[
+    {id:"site", rot:"Link do seu site", ph:"https://seunome.github.io", largura:1},
+    {id:"formspree", rot:"Endereço do formulário no Formspree", ph:"https://formspree.io/f/abc123", largura:1},
+    {id:"umami", rot:"ID do site no Umami (métricas)", ph:"a1b2c3d4-0000-0000-0000-000000000000", largura:1}
   ]}
 ];
 var NDEST = 5;
@@ -277,7 +282,7 @@ function montarCampos(){
     caixa.appendChild(f);
   });
   var f = document.createElement("fieldset"); f.className = "grupo";
-  f.innerHTML = '<legend>Seus nichos (cada um precisa de 3 vídeos)</legend><div class="nichos" id="nichos"></div>';
+  f.innerHTML = '<legend>Seus nichos (cada um precisa de 3 vídeos na pasta midia)</legend><div class="nichos" id="nichos"></div>';
   caixa.appendChild(f);
   var n = f.querySelector("#nichos");
   NICHOS.forEach(function(x){
@@ -290,12 +295,12 @@ function montarCampos(){
     n.appendChild(b);
   });
   var d = document.createElement("fieldset"); d.className = "grupo";
-  d.innerHTML = '<legend>Seus 5 melhores vídeos (do mais forte pro menos forte)</legend>';
+  d.innerHTML = '<legend>Seus 5 melhores vídeos (1.mp4 a 5.mp4 na pasta midia/destaques, do mais forte pro menos forte)</legend>';
   for (var i = 1; i <= NDEST; i++){
     var linha = document.createElement("div"); linha.className = "destaque-linha";
     linha.innerHTML =
-      '<div class="campo"><label for="d_link' + i + '">Link do vídeo ' + i + '</label>' +
-      '<input id="d_link' + i + '" type="text" placeholder="link do .mp4 ou do reels" /></div>' +
+      '<div class="campo"><label for="d_link' + i + '">Título do vídeo ' + i + '</label>' +
+      '<input id="d_link' + i + '" type="text" placeholder="Review da Marca A" /></div>' +
       '<div class="campo"><label for="d_res' + i + '">Resultado (se tiver)</label>' +
       '<input id="d_res' + i + '" type="text" placeholder="116 vendas" /></div>';
     d.appendChild(linha);
@@ -338,6 +343,9 @@ function blocoDados(){
   add("E-mail", pega("email"));
   add("WhatsApp", pega("zap"));
   add("Cidade", pega("cidade"));
+  add("Link do site", pega("site"));
+  add("Endereço do Formspree (DADOS.formspree)", pega("formspree"));
+  add("ID do Umami (DADOS.umami)", pega("umami"));
   if (n.length) linhas.push("Nichos que eu atendo (uma aba pra cada): " + n.join(", "));
   add("Frase do que eu faço pela marca", pega("frase"));
   add("Marcas com quem já trabalhei", pega("marcas"));
@@ -349,7 +357,7 @@ function blocoDados(){
   var dest = [];
   for (var i = 1; i <= NDEST; i++){
     var l = pega("link" + i), r = pega("res" + i);
-    if (l || r) dest.push("  " + i + ") " + (l || "link ainda não tenho") + (r ? " | resultado: " + r : ""));
+    if (l || r) dest.push("  " + i + ".mp4: " + (l || "título ainda não tenho") + (r ? " | resultado: " + r : ""));
   }
   if (dest.length) linhas.push("Meus 5 melhores vídeos (o 1 é o mais forte):\n" + dest.join("\n"));
   if (!linhas.length){

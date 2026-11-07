@@ -21,27 +21,52 @@ def base(nome_modelo, g):
     return f"""Você vai criar o MEU PORTFÓLIO de UGC Creator no modelo "{nome_modelo}". Crie a primeira versão completa sem me fazer perguntas antes: quando terminar, eu peço os ajustes.
 
 == COMO ENTREGAR ==
-- Tudo em UM ÚNICO arquivo chamado index.html, com o CSS dentro de uma tag style e o JavaScript dentro de uma tag script, no mesmo arquivo.
-- Sem bibliotecas e sem build: só as fontes do Google Fonts podem vir de fora.
+- Estou usando o Claude Code, dentro da minha pasta do portfólio. Crie aí um arquivo index.html, com o CSS dentro de uma tag style e o JavaScript dentro de uma tag script, no mesmo arquivo. Minhas fotos e vídeos ficam na pasta midia, ao lado dele.
+- Sem bibliotecas e sem build: de fora só podem vir as fontes do Google Fonts, o formulário do Formspree e as métricas do Umami.
 - Precisa abrir com dois cliques no navegador e poder ser publicado no GitHub Pages ou na Vercel sem nenhum ajuste.
 - No head: title com o meu nome e "portfólio UGC", meta description curta e meta viewport.
+- Prévia do link no WhatsApp: no head, escritas direto no HTML (nunca geradas por JavaScript), as tags og:title com o meu nome, og:description com a minha frase, og:type website, og:url e og:image com o link COMPLETO da minha foto de capa (começando com https://). Se eu ainda não tiver o link do site, deixe MEU-LINK no lugar dele e me avise que isso precisa ser trocado depois de publicar.
 - Quando terminar, me diga em uma linha como abrir o arquivo e me pergunte o que eu quero ajustar primeiro.
 
 == ESTRUTURA: O FUNIL DO PORTFÓLIO (exatamente nesta ordem, não mude e não acrescente seções) ==
-A capa filtra, o meio convence, o fim fecha. A marca precisa chegar ao contato sem desvio.
+A capa filtra, o meio convence, o fim fecha. A marca precisa chegar ao contato sem desvio. Em todas as telas, um botão pequeno de WhatsApp fica fixo no canto de baixo, sem cobrir conteúdo, com a mesma mensagem pronta do contato. Logo depois de Sobre mim, uma faixa discreta com as marcas que eu já atendi passa rolando devagar, no estilo do modelo: logos da pasta midia/logos, se eu tiver, ou os nomes em texto. O botão e a faixa não contam como seções novas.
 1. CAPA: menu no topo com o meu nome e links que rolam suave até cada seção (Sobre mim, Destaques, Nichos, O que as marcas falam, Contato), virando menu enxuto no celular. No computador, a capa tem DUAS COLUNAS: o MEU NOME bem grande À ESQUERDA e a MINHA FOTO À DIREITA. Nunca capa centralizada. No celular empilha com o nome primeiro. Na coluna do nome: uma linha "UGC creator de [meus nichos]", uma frase curta do que eu faço pela marca, três números curtos (vídeos gravados, marcas atendidas, prazo de entrega) e dois botões: "Ver meus melhores vídeos" (rola até os destaques) e "Falar comigo" (rola até o contato).
 2. SOBRE MIM: texto curto em primeira pessoa (quem eu sou, onde moro, minha rotina e por que as marcas do meu nicho combinam comigo), uma segunda foto minha no dia a dia, três diferenciais (estudo a dor do cliente da marca; roteiro meu, aprovado pela marca antes de gravar; edição pronta pra anúncio, com gancho forte e som tratado) e um selo "{formada} no Método Profissão do Futuro · {ela} da Rafa Chagas".
 3. DESTAQUES: os meus 5 MELHORES vídeos (não os mais recentes), com o mais forte em evidência (maior ou no centro). Se o vídeo tiver resultado real (ex.: 116 vendas), ele ganha um selo com o resultado. Cada card mostra título curto, nicho e formato (ADS, review, unboxing, tutorial, nativo).
 4. CONTEÚDO POR NICHOS: abas, uma por nicho, e ao clicar aparecem só os vídeos daquele nicho, sem recarregar a página. Cada nicho precisa de pelo menos 3 vídeos: se tiver menos, mostre um aviso discreto "mínimo 3 vídeos: com menos, tire o nicho". Se a página abrir com ?c=nome-do-nicho no link, ela já abre na aba desse nicho e rola até a seção (é o link que eu mando nas plataformas).
 5. O QUE AS MARCAS FALAM: três depoimentos de marcas, com o nome da marca e o contexto, e embaixo a lista das marcas que eu já atendi. NUNCA invente depoimento: onde eu ainda não tiver, mostre o espaço vazio com a dica "cole aqui a frase ou o print real da marca".
-6. CONTATO: um chamado curto ("bora trabalhar juntos/juntas?"), botão principal de WhatsApp que já abre com a mensagem pronta "Oi, [meu nome]! Vi seu portfólio e quero conversar sobre vídeos pra minha marca." (se eu não tiver WhatsApp, o botão vira e-mail com assunto pronto), botão do Instagram e quatro dúvidas curtas logo ali: onde posso usar o conteúdo, por quanto tempo, tem exclusividade, qual o prazo. Depois um rodapé simples com meu nome e "UGC creator · {ela} da Rafa Chagas".
+6. CONTATO: um chamado curto ("bora trabalhar juntos/juntas?"), botão principal de WhatsApp que já abre com a mensagem pronta "Oi, [meu nome]! Vi seu portfólio e quero conversar sobre vídeos pra minha marca." (se eu não tiver WhatsApp, o botão vira e-mail com assunto pronto), botão do Instagram, o formulário de orçamento (regras em == FORMULÁRIO ==) e quatro dúvidas curtas logo ali: onde posso usar o conteúdo, por quanto tempo, tem exclusividade, qual o prazo. Depois um rodapé simples com meu nome e "UGC creator · {ela} da Rafa Chagas".
 
 == VÍDEOS ==
-- Todo vídeo é vertical 9:16. Ao passar o mouse, o vídeo começa a tocar sem som dentro do card. Ao clicar, abre um player grande por cima da página, com som e controles, que fecha no X, clicando fora ou com Esc.
-- Enquanto eu não colocar o link de um vídeo ou de uma foto, o espaço aparece listrado, com um ícone e uma dica curta do que colocar ali (ex.: na foto de capa "Retrato com rosto, luz natural e ambiente real. Sem selfie: a capa mostra o seu nível"; nos destaques "Os melhores na frente, não os mais recentes").
+- Todo vídeo é vertical 9:16, em arquivo .mp4, usado com uma tag video e um caminho relativo.
+- Só o primeiro destaque toca sozinho, sem som, quando aparece na tela, no computador e no celular (muted, autoplay, loop e playsinline). Os outros não tocam sozinhos: no computador tocam sem som ao passar o mouse e no celular esperam o toque. Pra todo vídeo mostrar uma imagem antes de tocar, use preload="metadata" e #t=0.1 no fim do caminho.
+- Ao clicar ou tocar, abre um player grande por cima da página, com som e controles, que fecha no X, clicando fora ou com Esc.
+- Link de Reels, TikTok ou Google Drive não toca na tag video. Se eu passar um link desses, deixe a lacuna e me avise qual arquivo .mp4 está faltando.
+- Enquanto eu não colocar um vídeo ou uma foto, o espaço aparece listrado, com um ícone e uma dica curta do que colocar ali (ex.: na foto de capa "Retrato com rosto, luz natural e ambiente real. Sem selfie: a capa mostra o seu nível"; nos destaques "Os melhores na frente, não os mais recentes").
+
+== PASTA MIDIA ==
+- Olhe a pasta midia antes de começar e use o que estiver nela. Se ela não existir, crie as pastas abaixo, faça o portfólio com as lacunas listradas e me diga onde colocar cada arquivo.
+- midia/capa.jpg e midia/sobre.jpg: minhas fotos.
+- midia/destaques: os 5 melhores vídeos, com os nomes 1.mp4 a 5.mp4 (o 1 é o mais forte).
+- midia/nichos: uma pasta por nicho, com os vídeos dele. O nome da pasta é o nome do nicho.
+- midia/logos: logos das marcas (opcional).
+- Confira o peso dos vídeos: cada um deve ter até uns 15 MB. Se passar disso, comprima pra 720p se você tiver como fazer isso aqui; se não tiver, me diga quais arquivos preciso exportar de novo em 720p. Nenhum arquivo pode passar de 100 MB, que é o limite do GitHub.
+
+== FORMULÁRIO ==
+- Na seção Contato, um formulário de orçamento com: nome, empresa, produto, prazo e WhatsApp. Todos obrigatórios, sem cara de cadastro.
+- Ele envia para o endereço do Formspree que está em DADOS.formspree, com fetch, method POST e o cabeçalho Accept: application/json, sem sair da página. Ao dar certo, troca o formulário por "Recebi! Te chamo em breve."; ao dar erro, mostra o botão de WhatsApp como saída.
+- Inclua um campo escondido chamado _gotcha, que barra robôs.
+- Se DADOS.formspree estiver vazio, não mostre o formulário: o contato fica só com os botões, e me avise que falta criar o formulário no Formspree.
+
+== MÉTRICAS ==
+- Se DADOS.umami tiver o meu ID, coloque no head: <script defer src="https://cloud.umami.is/script.js" data-website-id="MEU-ID"></script>. Sem ID, não coloque o script.
+- Crie uma função medir(nome) que chama window.umami.track(nome) só se window.umami existir, pra métrica nunca quebrar a página. Se umami ainda não existir, ela espera o carregamento da página e tenta de novo uma vez. Antes de enviar, deixe o nome em minúsculas, sem acento, com hífen no lugar de espaço e com no máximo 50 caracteres. Nunca use o atributo data-umami-event, porque ele pode travar os cliques dos vídeos.
+- Chame medir ao: abrir um nicho (nicho-NOME, uma vez por visita pra cada nicho), abrir um vídeo no player (video-TITULO), clicar no WhatsApp (whatsapp), clicar no Instagram (instagram) e enviar o formulário com sucesso (orcamento-enviado).
+- Links com origem: se a página abrir com ?de=alguma-coisa, chame medir com de-alguma-coisa, uma vez. É assim que eu sei de onde a visita veio e qual marca abriu, porque o WhatsApp muitas vezes não informa a origem. Isso funciona junto com ?c=, por exemplo ?c=casa&de=marca-x.
+- Minhas visitas: se a página abrir com ?eu=1, rode localStorage.setItem('umami.disabled', 1) dentro de try/catch e mostre por 3 segundos um aviso discreto "Suas visitas não contam mais neste navegador". Sem ?eu=1, esse aviso nunca aparece.
 
 == DADOS FÁCEIS DE TROCAR ==
-- Coloque TODOS os meus dados num objeto JavaScript chamado DADOS, no fim do arquivo, com comentários em português explicando cada campo: nome, instagram, whatsapp, email, nichosResumo, frase, provas (3 números), fotoCapa, fotoSobre, sobreTexto, diferenciais, destaques (5 vídeos com titulo, nicho, formato, video, capa e res), nichos (cada um com nome e lista de vídeos), elogios (texto, marca, detalhe), marcas e duvidas.
+- Coloque TODOS os meus dados num objeto JavaScript chamado DADOS, no fim do arquivo, com comentários em português explicando cada campo: nome, instagram, whatsapp, email, site, formspree, umami, nichosResumo, frase, provas (3 números), fotoCapa, fotoSobre, sobreTexto, diferenciais, destaques (5 vídeos com titulo, nicho, formato, video, capa e res), nichos (cada um com nome e lista de vídeos), elogios (texto, marca, detalhe), marcas e duvidas.
 - A página inteira é montada a partir desse objeto, então eu só mexo nele pra trocar tudo.
 
 == TAMANHO E LEITURA ==
